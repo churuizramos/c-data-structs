@@ -1,3 +1,6 @@
+// Written by Jesus Ruiz Ramos
+// CSE 302 Week 1
+
 #include <iostream>
 using namespace std;
 
