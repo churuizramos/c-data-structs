@@ -3,6 +3,8 @@
 //
 // When I wrote this program I wasn't sure how much complexity we needed for the system
 // but since I had the free time I went ahead and just added some fun stuff just because.
+//
+// A better description to the program is located in the bundled README.md
 
 #include <iostream>
 #include <vector>
