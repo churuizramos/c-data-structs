@@ -1,3 +1,8 @@
+// Jesus Ruiz Ramos
+// Week 2 Programming Assignment
+//
+// I didn't really add anything fancy to this
+
 #include <iostream>
 using namespace std;
 
