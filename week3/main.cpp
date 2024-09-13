@@ -1,6 +1,7 @@
 // main.cpp
 
 #include <iostream>
+#include <fstream>
 #include "UnsortedArrayType.cpp"
 using namespace std;
 
@@ -17,6 +18,10 @@ int main() {
 
 	ust.InsertItem(100);
 	ust.Show();
+
+	ofstream OutFile("main.out");
+	OutFile << 100 << endl;
+	OutFile.close();
 
 	return 0;
 }
