@@ -1,3 +1,10 @@
+// Jesus Ruiz Ramos
+// Week 6 Assignment
+// Debugging a Sorting Algorithm
+// 
+// Fix:
+// - j starts at i not i-1, because index -1 is not valid when i is 0
+
 #include <iostream>
 using namespace std;
 
