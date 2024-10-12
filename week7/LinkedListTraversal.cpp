@@ -1,4 +1,6 @@
-#include <cstddef>
+// Jesus Ruiz Ramos
+// Week 7 Assignment
+// Single Linked List Traversal
 #include <iostream>
 #include <cstdlib>
 using namespace std;
