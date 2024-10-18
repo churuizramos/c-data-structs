@@ -2,51 +2,56 @@
 // 8 Queens Problem
 // Week 8 Programming Assignment
 
+
 #include <iostream>
 #include <vector>
 using namespace std;
 
-const int N = 8;
-
-bool isSafe(vector<vector<int> >& board, int row, int col)
-{
-    for (int x = 0; x < col; x++)
-        if (board[row][x] == 1)
-            return false;
-    for (int x = row, y = col; x >= 0 && y >= 0; x--, y--)
-        if (board[x][y] == 1)
-            return false;
-    for (int x = row, y = col; x < N && y >= 0; x++, y--)
-        if (board[x][y] == 1)
-            return false;
+bool isValidPlacement(const vector<vector<char>>& board, int row, int col) {
+    // Check the same row
+    for (int j = 0; j < col; j++) {
+        if (board[row][j] == 'Q') return false;
+    }
+    // Check upper diagonal
+    for (int i = row, j = col; i >= 0 && j >= 0; i--, j--) {
+        if (board[i][j] == 'Q') return false;
+    }
+    // Check lower diagonal
+    for (int i = row, j = col; i < 8 && j >= 0; i++, j--) {
+        if (board[i][j] == 'Q') return false;
+    }
     return true;
 }
 
-bool queens(vector<vector<int> >& board, int col)
-{
-    if (col == N) {
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++)
-                cout << board[i][j] << " ";
-            cout << endl;
+void printBoard(const vector<vector<char>>& board) {
+    for (const auto& row : board) {
+        for (char cell : row) {
+            cout << cell << " ";
         }
         cout << endl;
-        return true;
     }
-    for (int i = 0; i < N; i++) {
-        if (isSafe(board, i, col)) {
-            board[i][col] = 1;
-            if (queens(board, col + 1))
-                return true;
-            board[i][col] = 0;
-        }
-    }
-    return false;
+    cout << endl;
 }
 
-int main()
-{
-    vector<vector<int> > board(N, vector<int>(N, 0));
-    queens(board, 0);
+bool solveNQueens(vector<vector<char>>& board, int col) {
+    if (col == 8) {
+        printBoard(board);
+        return true; // Found one solution, return true
+    }
+
+    for (int i = 0; i < 8; i++) {
+        if (isValidPlacement(board, i, col)) {
+            board[i][col] = 'Q'; // Place queen
+            if (solveNQueens(board, col + 1)) // Recur to place rest
+                return true; // Stop after finding the first solution
+            board[i][col] = '.'; // Backtrack
+        }
+    }
+    return false; // No solution found in this configuration
+}
+
+int main() {
+    vector<vector<char>> board(8, vector<char>(8, '.')); // Initialize with '.'
+    solveNQueens(board, 0);
     return 0;
 }
